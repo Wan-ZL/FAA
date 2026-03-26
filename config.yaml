@@ -1,0 +1,20 @@
+llm:
+  default_leader_model: "claude-opus-4-6"
+  default_worker_model: "claude-sonnet-4-6"
+  default_router_model: "claude-haiku-4-5-20251001"
+  fallback_provider: "openai/gpt-4o"
+
+agents:
+  max_concurrent: 5
+  max_tool_calls_per_turn: 25
+
+tokens:
+  leader_budget: 32000
+  worker_budget: 16000
+  router_budget: 2000
+
+memory:
+  neo4j_uri: "bolt://localhost:7687"
+  chroma_persist_dir: "./data/chroma"
+  duckdb_path: "./data/timeseries.duckdb"
+  sqlite_board_path: "./data/shared_board.db"
