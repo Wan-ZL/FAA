@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "finance-agent"
+version = "0.1.0"
+description = "AI-powered financial analysis engine with multi-agent collaboration"
+readme = "README.md"
+license = "BSL-1.1"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.40.0",
+    "litellm>=1.50.0",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.4",
+    "neo4j>=5.0",
+    "chromadb>=0.5",
+    "duckdb>=1.0",
+    "mcp>=1.0",
+    "rich>=13.0",
+    "httpx>=0.27",
+    "yfinance>=0.2.40",
+    "finnhub-python>=2.4",
+    "fredapi>=0.5",
+    "sec-edgar-downloader>=5.0",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "pandas-ta>=0.3",
+    "mibian>=0.1",
+    "empyrical>=0.5",
+    "sentence-transformers>=3.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "mypy>=1.10",
+    "pre-commit>=3.7",
+]
+quantlib = [
+    "QuantLib>=1.34",
+]
+talib = [
+    "TA-Lib>=0.4",
+]
+backtest = [
+    "vectorbt>=0.26",
+]
+
+[project.scripts]
+finance-agent = "finance_agent.cli:main"
+
+[project.entry-points."finance_agent.providers"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
